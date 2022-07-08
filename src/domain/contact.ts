@@ -1,14 +1,14 @@
 export type Contact = {
-  name: string,
-  lastName: string,
+  name: string
+  lastName: string
   age: number
 }
 
 export namespace GetAllContacts {
   export type Input = {}
   export type Output = {
-    now: Date,
-    isCached: boolean,
+    now: Date
+    isCached: boolean
     contacts: Contact[]
   }
 }
