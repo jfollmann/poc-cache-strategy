@@ -6,14 +6,14 @@ export default class GetAllContactsService implements GetAllContacts {
 
   private readonly cacheKey = 'ContactsKey'
 
-  private getDataFromDB (_input: GetAllContacts.Input): GetAllContacts.Output {
+  private async getDataFromDB (_input: GetAllContacts.Input): Promise<GetAllContacts.Output> {
     console.log('Running Fake Query in DB')
     const dataDB = [
       { name: 'Jefferson', lastName: 'Follmann', age: 30 },
       { name: 'Andressa', lastName: 'Duarte', age: 20 },
       { name: 'Antônio', lastName: 'Follmann', age: 10 }
     ]
-    this.cacheService.set<Contact[]>(this.cacheKey, dataDB, 2)
+    await this.cacheService.set<Contact[]>(this.cacheKey, dataDB, 2)
     return { now: new Date(), isCached: false, contacts: dataDB }
   }
 
